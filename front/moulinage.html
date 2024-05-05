@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Moulinage d'Olives</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.css" rel="stylesheet" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/4.0.1-alpha.5/web3.min.js"
+        integrity="sha512-NfffVWpEqu1nq+658gzlJQilRBOvjs+PhEKSjT9gkQXRy9OfxI2TOXr33zS7MgGyTpBa5qtC6mKJkQGd9dN/rw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand me-2" href="home.html">
+                <img src="https://img.freepik.com/premium-vector/hand-drawn-olives-icon_202271-445.jpg" height="40"
+                    alt=" Logo" loading="lazy" style="margin-top: -1px;" />
+            </a>
+
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+                data-mdb-target="#navbarButtonsExample" aria-controls="navbarButtonsExample" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarButtonsExample">
+
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.html">Dashboard</a>
+                    </li>
+                </ul>
+
+                <div class="d-flex align-items-center">
+                    <button type="button" class="btn btn-link px-3 me-2">
+                        Login
+                    </button>
+                    <button id="metamask" class="btn btn-primary">Connecter à Metamask</button>
+                    <p id="status1" class="status" style="color: red">Déconnecté</p>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ajouter les Lots pour le Moulinage</h5>
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <form>
+                            <p>ID du Moulin</p>
+                            <input type="text" id="id-moulin" placeholder="1">
+                            <p>ID des lots d'olive</p>
+                            <input type="text" id="id-lots-olive" >
+                            <p>Type d'Extraction</p>
+                            <select id="type-extraction">
+                                <option value="Extraction à froid">Extraction à froid</option>
+                                <option value="Pressage à température non contrôlée">Pressage à température non contrôlée</option>
+                                <option value="Extraction chimique avec solvants">Extraction chimique avec solvants</option>
+                            </select>
+                            <p>Type de Solvant (le cas échéant)</p>
+                            <select id="type-solvant">
+                                <option value="Aucun">Aucun</option>
+                                <option value="Hexane">Hexane</option>
+                                <option value="Éthanol">Éthanol</option>
+                                <option value="Acétone">Acétone</option>
+                                <option value="Méthyléthylcétone">Méthyléthylcétone</option>
+                                <option value="Benzène">Benzène</option>
+                                <option value="Toluène">Toluène</option>
+                                <option value="Éther de pétrole">Éther de pétrole</option>
+                            </select>
+                            <p>Quantité d'Olives en Kg</p>
+                            <input type="text" id="quantite-olives" placeholder="1000">
+                            <p>Date de Moulinage</p>
+                            <input type="date" id="date-moulinage">
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Fermer</button>
+                    <button type="button" class="btn btn-primary" id="moulinagebtn">Ajouter</button>
+                    <div>
+                        <p id="ajoutMoulinages"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="content">
+            <div class="sidebar">
+                <a class="btn btn-link" href="moulin.html">Moulin</a>
+                <a class="btn btn-link" href="moulinage.html">Moulinage</a>
+                <a class="btn btn-link" href="lothuile.html">Lot d'Huile</a>
+                <a class="btn btn-link" href="citerne.html">Citerne</a>
+                <a class="btn btn-link" href="qr.html">Huile historique</a>
+            </div>
+            <table class="table">
+                <thead class="table-secondary">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">IDS des Lots Olives</th>
+                        <th scope="col">ID du Moulin</th>
+                        <th scope="col">Type d'Extraction</th>
+                        <th scope="col">Type de Solvant</th>
+                        <th scope="col">Quantité d'Olives (Kg)</th>
+                        <th scope="col">Date de Moulinage</th>
+                    </tr>
+                </thead>
+                <tbody id="moulinages">
+                </tbody>
+            </table>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-right: 50px;">
+            <button id="getmoulinages" class="btn btn-success">Afficher Moulinages</button>
+            <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
+                Ajouter les Moulinage
+            </button>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.js"></script>
+</body>
+
+<script src="./moulinage.js"></script>
+
+</html>

@@ -1,0 +1,44 @@
+#main{
+    margin-left: 100px;
+    width: 1000px;
+    display: flex;
+    justify-content: space-between;
+}
+.sidebar{
+    width:200Px;
+    margin-right:50px;
+}
+.content {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+    margin-right:50px;
+}
+.status{
+    padding-left:10px;
+    padding-top: 20px;
+    font-size: smaller;
+}
+
+a{
+    text-decoration: none;
+    color:black;
+}
+#ajout, #ajoutLots, #modifLots, #ajoutCiterne,#ajoutHuile{
+    padding-left:10px;
+    padding-top: 20px;
+    font-size: smaller;
+}
+.cards {
+    display:flex;
+    justify-content: space-between;
+}
+.card {
+    margin:20px;
+    margin-top: 70px;
+}
+
+.infos{
+   margin-right:800px;
+   margin-top: 50px;
+}

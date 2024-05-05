@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Citerne Traçabilité</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.css" rel="stylesheet" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/4.0.1-alpha.5/web3.min.js"
+        integrity="sha512-NfffVWpEqu1nq+658gzlJQilRBOvjs+PhEKSjT9gkQXRy9OfxI2TOXr33zS7MgGyTpBa5qtC6mKJkQGd9dN/rw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand me-2" href="home.html">
+                <img src="https://img.freepik.com/premium-vector/hand-drawn-olives-icon_202271-445.jpg" height="40" alt="Logo" loading="lazy" />
+            </a>
+
+            <!-- Toggle button -->
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+                data-mdb-target="#navbarButtonsExample" aria-controls="navbarButtonsExample" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Collapsible wrapper -->
+            <div class="collapse navbar-collapse" id="navbarButtonsExample">
+                <!-- Left links -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.html">Dashboard</a>
+                    </li>
+                </ul>
+                <!-- Left links -->
+
+                <div class="d-flex align-items-center">
+                    <button type="button" class="btn btn-link px-3 me-2">
+                        Login
+                    </button>
+                    <button id="metamask" class="btn btn-primary">Metamask Connect</button>
+                    <p id="status1" class="status" style="color: red">disconnected</p>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content">
+        <div class="sidebar">
+            <a class="btn btn-link" href="moulin.html">Moulin</a>
+            <a class="btn btn-link" href="moulinage.html">Moulinage</a>
+            <a class="btn btn-link" href="lothuile.html">Lots d'Huile</a>
+            <a class="btn btn-link" href="citerne.html">Citerne</a>
+            <a class="btn btn-link" href="qr.html">Huile historique</a>
+        </div>
+
+        <table class="table">
+            <thead class="table-secondary">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Emplacement</th>
+                    <th scope="col">Capacité Réelle</th>
+                    <th scope="col">Type de Citerne</th>
+                    <th scope="col">ID des Lots d'Huiles</th>
+                </tr>
+            </thead>
+            <tbody id="cisternes">
+            </tbody>
+        </table>
+    </div>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-right: 50px;">
+        <button id="getCiternes" class="btn btn-success">Afficher Citernes</button>
+        <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#citerneModal">
+            Ajouter une citerne
+        </button>
+    </div>
+
+    <!-- Modal pour Ajouter une Citerne -->
+    <div class="modal fade" id="citerneModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ajouter une citerne</h5>
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <form>
+                            <p>ID Lots Huiles</p>
+                            <input type="text" id="id_huiles" placeholder="ID des Lots d'Huile">
+                            <p>Emplacement</p>
+                            <input type="text" id="emplacement" placeholder="Emplacement">
+                            <p>Capacité Réelle</p>
+                            <input type="text" id="capaciteReelle" placeholder="Capacité Réelle">
+                            <p>Type de Citerne</p>
+                            <input type="text" id="citerneType" placeholder="Type de Citerne">
+                            
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Fermer</button>
+                    <button type="button" class="btn btn-primary" id="citerneBtn">Ajouter</button>
+                    <div>
+                        <p id="ajoutCiterne"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MDB -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.js"></script>
+    <script src="./citerne.js"></script>
+</body>
+
+</html>

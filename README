@@ -1,0 +1,17 @@
+# Olive Supply Chain DApp
+
+## Overview
+The Olive Supply Chain DApp is a blockchain-powered application aimed at enhancing transparency and traceability in the olive oil supply chain. It allows stakeholders to track the journey of olives from farm to table, ensuring authenticity and quality at every step.
+
+## Features
+- **Blockchain Technology**: Utilizes blockchain for immutable and transparent record-keeping.
+- **Supply Chain Tracking**: Tracks the movement of olives, ensuring traceability.
+- **Authenticity Verification**: Ensures the authenticity and quality of olive oil products.
+- **User-friendly Interface**: Provides an intuitive interface for users to interact with the supply chain data.
+
+## Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/olive-supply-chain-dapp.git
+2. cd olive-supply-chain-dapp
+npm install
